@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 public class LZW {
+    private static final Integer ASCII_LENGTH = 256;
+
     private LZW() {
     }
 
@@ -14,9 +16,9 @@ public class LZW {
      */
     public static List<Integer> compress(String uncompressed) {
         //Build the dictionary.
-        int dictSize = 256;
+        int dictSize = ASCII_LENGTH;
         Map<String, Integer> dictionary = new HashMap<>();
-        for (int i = 0; i < 256; i++)
+        for (int i = 0; i < dictSize; i++)
             dictionary.put("" + (char)i, i);
 
         String w = "";
@@ -37,6 +39,13 @@ public class LZW {
         if (!w.equals(""))
             result.add(dictionary.get(w));
 
+        System.out.println("Utworzony słownik (wyłączając tablicę ASCII): ");
+        dictionary.entrySet()
+                .stream()
+                .filter(entry -> entry.getValue() >= ASCII_LENGTH)
+                .sorted(Map.Entry.comparingByValue())
+                .forEach(entry -> System.out.println(entry.getValue() + " -> " + entry.getKey()));
+
         return result;
     }
 
@@ -45,9 +54,9 @@ public class LZW {
      */
     public static String decompress(List<Integer> compressed) {
         //Build the dictionary.
-        int dictSize = 256;
+        int dictSize = ASCII_LENGTH;
         Map<Integer, String> dictionary = new HashMap<>();
-        for (int i = 0; i < 256; i++)
+        for (int i = 0; i < dictSize; i++)
             dictionary.put(i, "" + (char)i);
 
         String w = "" + (char)(int)compressed.remove(0);
@@ -59,7 +68,7 @@ public class LZW {
             else if (k == dictSize)
                 entry = w + w.charAt(0);
             else
-                throw new IllegalArgumentException("Bad compressed k: " + k);
+                throw new IllegalArgumentException("Bad compress k: " + k);
 
             result.append(entry);
 
@@ -68,6 +77,14 @@ public class LZW {
 
             w = entry;
         }
+
+        System.out.println("Utworzony słownik (wyłączając tablicę ASCII): ");
+        dictionary.entrySet()
+                .stream()
+                .filter(entry -> entry.getKey() >= ASCII_LENGTH)
+                .sorted(Map.Entry.comparingByKey())
+                .forEach(entry -> System.out.println(entry.getKey() + " -> " + entry.getValue()));
+
         return result.toString();
     }
 }
