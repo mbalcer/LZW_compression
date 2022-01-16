@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.edu.pbs.lzw_compression.controller.ViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="430.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.edu.pbs.lzw_compression.controller.ViewController">
    <children>
       <Label layoutX="14.0" layoutY="14.0" prefHeight="20.0" prefWidth="300.0" text="Tekst oryginalny:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextArea fx:id="uncompressedTextLabel" layoutX="14.0" layoutY="35.0" prefHeight="350.0" prefWidth="300.0" wrapText="true" />
-      <TextArea fx:id="compressedTextLabel" layoutX="386.0" layoutY="35.0" prefHeight="350.0" prefWidth="300.0" wrapText="true" />
+      <TextArea fx:id="uncompressedTextLabel" layoutX="14.0" layoutY="35.0" prefHeight="350.0" prefWidth="300.0" wrapText="true" AnchorPane.bottomAnchor="40.0" AnchorPane.topAnchor="40.0" />
+      <TextArea fx:id="compressedTextLabel" layoutX="386.0" layoutY="35.0" prefHeight="350.0" prefWidth="300.0" wrapText="true" AnchorPane.bottomAnchor="40.0" AnchorPane.topAnchor="40.0" />
       <Label layoutX="386.0" layoutY="14.0" prefHeight="20.0" prefWidth="300.0" text="Indeksy zakodowanych danych:">
          <font>
             <Font size="14.0" />
@@ -38,5 +37,7 @@
             </ImageView>
          </graphic>
       </Button>
+      <Button layoutX="253.0" layoutY="396.0" mnemonicParsing="false" onAction="#clearUncompressedTextLabel" text="Wyczyść" AnchorPane.bottomAnchor="8.399999999999977" />
+      <Button layoutX="386.0" layoutY="396.0" mnemonicParsing="false" onAction="#clearCompressedTextLabel" text="Wyczyść" AnchorPane.bottomAnchor="8.0" />
    </children>
 </AnchorPane>

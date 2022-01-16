@@ -33,4 +33,14 @@ public class ViewController {
         String decompressed = LZW.decompress(indexes);
         uncompressedTextLabel.setText(decompressed);
     }
+
+    @FXML
+    protected void clearUncompressedTextLabel() {
+        uncompressedTextLabel.clear();
+    }
+
+    @FXML
+    protected void clearCompressedTextLabel() {
+        compressedTextLabel.clear();
+    }
 }
