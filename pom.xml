@@ -61,7 +61,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                pl.edu.pbs.lzw_compression_java/pl.edu.pbs.lzw_compression.HelloApplication
+                                pl.edu.pbs.lzw_compression_java/pl.edu.pbs.lzw_compression.LzwCompressionApplication
                             </mainClass>
                         </configuration>
                     </execution>
