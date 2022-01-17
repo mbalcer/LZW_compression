@@ -25,6 +25,8 @@ public class ViewController {
         String compressedString = compressed.stream()
                 .map(String::valueOf)
                 .collect(Collectors.joining(", "));
+        System.out.println("Długość oryginalnego ciągu: " + text.length());
+        System.out.println("Długość tablicy po skompresowaniu: " + compressed.size());
         System.out.println("Wynik: " + compressedString);
         compressedTextLabel.setText(compressedString);
     }
